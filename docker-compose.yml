@@ -1,8 +1,8 @@
 version: "3.9"
 services:
   app:
-    image: myprojectimage
-    container_name: myproject_app
+    image: varunmkn/campus-latestv4
+    container_name: campus-contv4
     ports:
       - "9090:8080"   # HostPort:ContainerPort, App accessible at http://localhost:9090
     environment:
@@ -23,8 +23,102 @@ services:
       MYSQL_PASSWORD: password
     volumes:
       - db_data:/var/lib/mysql
-    ports:
-      - "3306:3306"   # Optional, only if you want to connect from host
 
 volumes:
   db_data:
+
+# version: '3.9'
+
+
+# services:
+#   tomcat-app:
+#     image: tomcat:9.0
+#     container_name: tomcat_app
+#     ports:
+#       - "8086:8080"   # Host 8086 maps to container 8080 (Tomcat portal)
+#       - "7007:8080"   # Host 7007 maps to container 8080 (your WAR app)
+#     volumes:
+#       - ./your-app.war:/usr/local/tomcat/webapps/your-app.war
+#     restart: unless-stopped
+
+# services:
+#   tomcat-app:
+#     image: tomcat:9.0
+#     container_name: tomcat_app
+#     ports:
+#       - "8086:8080"   # Host 8086 maps to Tomcat container 8080
+#     volumes:
+#       - ./app1.war:/usr/local/tomcat/webapps/ROOT.war
+#     environment:
+#       - REDIS_HOST=redis
+#       - REDIS_PORT=6379
+#     depends_on:
+#       - redis
+#     restart: unless-stopped
+
+
+#   redis:
+#     image: redis:7.0
+#     container_name: redis
+#     ports:
+#       - "6379:6379"
+#     restart: unless-stopped
+
+
+# services:
+#   foodsystem-app:
+#     image: kumbhambhargavi/APPNAME:latest
+#     container_name: APPNAME-container
+#     ports:
+#       - "7007:8080"  # Host 7007 → Container 8080
+#     depends_on:
+#       - mongodb
+#     environment:
+#       - MONGO_URI=mongodb://mongouser:mongopass@mongodb:27017/foodsystem
+#     restart: unless-stopped
+
+
+#   mongodb:
+#     image: mongo:6
+#     container_name: mongodb
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: mongouser
+#       MONGO_INITDB_ROOT_PASSWORD: mongopass
+#     ports:
+#       - "27017:27017"  # Host 27017 → Container 27017
+#     volumes:
+#       - mongodb-data:/data/db
+#     restart: unless-stopped
+
+# volumes:
+#   mongodb-data:
+
+
+
+# services:
+#   foodsystem-app:
+#     image: kumbhambhargavi/fimage:latest
+#     container_name: -container
+#     ports:
+#       - "7007:8080"
+#     depends_on:
+#       - postgresdb
+#     environment:
+#       - DB_HOST=postgresdb
+#       - DB_PORT=5432
+#       - DB_USER=fuser
+#       - DB_PASSWORD=fpass
+#       - DB_NAME=fappname
+
+#   postgresdb:
+#     image: postgres:15
+#     container_name: postgresdb
+#     environment:
+#       POSTGRES_USER: fuser
+#       POSTGRES_PASSWORD: fpass
+#       POSTGRES_DB: fsystem
+#     ports:
+#       - "5432:5432"
+#     volumes:
+#       - pgdata:/var/lib/postgresql/data
+
