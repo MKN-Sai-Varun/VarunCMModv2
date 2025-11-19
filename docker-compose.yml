@@ -122,3 +122,27 @@ volumes:
 #     volumes:
 #       - pgdata:/var/lib/postgresql/data
 
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-installer.exe
+.\minikube-installer.exe
+
+minikube start --driver=docker
+
+kubectl create deployment mynginx --image=nginx
+
+kubectl get pods
+kubectl get deployments
+kubectl describe pods
+
+kubectl expose deployment mynginx --type=NodePort --port=80 --target-port=80
+kubectl get service mynginx
+
+kubectl scale deployment mynginx --replicas=4
+
+kubectl port-forward svc/mynginx 8081:80
+http://localhost:8081
+
+minikube dashboard
+kubectl delete deployment mynginx
+kubectl delete service mynginx
+minikube stop
+minikube delete
