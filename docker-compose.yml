@@ -157,3 +157,18 @@ docker stop nagiosdemo
 docker rm nagiosdemo
 docker rmi jasonrivers/nagios:latest
 
+
+Create instance , take the ssh command, paste in terminal
+sudo apt update
+sudo apt-get install docker.io
+sudo apt install git
+sudo apt install nano
+clone
+cd 
+sudo docker build -t img1 .
+sudo docker run -d -p 8000:80 img1
+
+dockerfile
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+
