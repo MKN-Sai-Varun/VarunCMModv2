@@ -172,3 +172,31 @@ dockerfile
 FROM nginx:alpine
 COPY . /usr/share/nginx/html
 
+pipeline {
+    agent any
+    stages {
+        stage('git repo & clean') {
+            steps {
+                //bat "rmdir  /s /q mavenjava"
+                bat "git clone https://github.com/MKN-Sai-Varun/MavenJava.git"
+                bat "mvn clean -f mavenjava"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f mavenjava" 
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f mavenjava"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f mavenjava"
+            }
+        }
+    }
+}
+
